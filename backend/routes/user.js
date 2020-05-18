@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { getUserById, getUser } = require("../controllers/user");
+const { getUserById, getUser, getAllUsers } = require("../controllers/user");
 const {
   isSignedIn,
   isAuthenticated,
@@ -9,6 +9,8 @@ const {
 } = require("../controllers/authentication");
 
 router.param("userId", getUserById);
+
+router.get("/users", getAllUsers);
 
 router.get("/user/:userId", isSignedIn, isAuthenticated, getUser);
 

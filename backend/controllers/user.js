@@ -17,3 +17,14 @@ exports.getUser = (req, res) => {
   req.profile.encry_password = undefined;
   return res.json(req.profile);
 };
+
+exports.getAllUsers = (req, res) => {
+  User.find().exec((err, users) => {
+    if (err || !users) {
+      return res.status(400).json({
+        error: "No user was found in DB",
+      });
+    }
+    return res.json(users);
+  });
+};
