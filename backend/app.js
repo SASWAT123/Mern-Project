@@ -7,6 +7,7 @@ const bodyParser = require("body-parser");
 //imports from different files
 const authRoutes = require("./routes/authentication");
 const userRoutes = require("./routes/user");
+const categoryRoutes = require("./routes/category");
 
 require("dotenv").config();
 
@@ -31,6 +32,7 @@ mongoose
 //Routes
 app.use("/api", authRoutes);
 app.use("/api", userRoutes);
+app.use("/api", categoryRoutes);
 
 const port = process.env.PORT || 8000;
 
